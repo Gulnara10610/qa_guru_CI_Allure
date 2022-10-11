@@ -25,7 +25,7 @@ public class SelenideTest {
 
         $(linkText("Gulnara10610/QA_guru")).click();
         $("#issues-tab").click();
-        //$(withText("#80")).should(Condition.exist);
+        $(withText("#1")).should(Condition.exist);
     }
 
 }
