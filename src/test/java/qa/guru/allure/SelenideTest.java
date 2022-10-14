@@ -6,9 +6,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.By.linkText;
 
 public class SelenideTest {
@@ -27,5 +28,15 @@ public class SelenideTest {
         $("#issues-tab").click();
         $(withText("#1")).should(Condition.exist);
     }
+
+    @Test
+    void testSearchWiki(){
+        open("https://github.com/selenide/selenide");
+        $("#wiki-tab").click();
+        $(".markdown-body").$(byText("Soft assertions")).click();
+        $("ol>*:nth-child(3)").shouldHave(text("JUnit5 extension"));
+    }
+
+
 
 }
